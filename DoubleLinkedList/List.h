@@ -88,7 +88,7 @@ template<typename T>
 size_t List<T>::DeleteData(const T data)
 {
 	if (size == -1)
-		throw exception("empty list");
+		throw exception("error");
 
 	Node<T>* tmp = element;
 	size_t count = 0;
@@ -112,7 +112,7 @@ template<typename T>
 void List<T>::Print(bool order)
 {
 	if (element == NULL) {
-		cout << "Empty List" << endl;
+		cout << "error" << endl;
 		return;
 	}
 
@@ -138,7 +138,7 @@ template<typename T>
 void List<T>::RemoveAt(size_t index)
 {
 	if (element == NULL) {
-		throw::exception("Removing from empty list");
+		throw::exception("error");
 	}
 	while (element -> prev) {
 		element = element->prev;
@@ -146,7 +146,7 @@ void List<T>::RemoveAt(size_t index)
 	for (size_t i = 0; i < index; i++) {
 		element=element->next;
 		if (element == NULL) {
-			throw::exception("Index out of bounds");
+			throw::exception("error");
 		}
 	}
 	if(element->next) element->next->prev = element->prev;
@@ -167,7 +167,7 @@ void List<T>::RemoveAt(size_t index)
 template<typename T>
 void List<T>::InsertBefore(size_t index, T value) {
 	if (element == NULL) {
-		throw::exception("No <<Before>>");
+		throw::exception("error");
 	}
 	while (element->prev) {
 		element = element->prev;
@@ -175,7 +175,7 @@ void List<T>::InsertBefore(size_t index, T value) {
 	for (size_t i = 0; i < index; i++) {
 		element = element->next;
 		if (element == NULL) {
-			throw::exception("Index out of bounds");
+			throw::exception("error");
 		}
 	}
 	Node<T>* tmp = new Node<T>(value);
